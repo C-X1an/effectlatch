@@ -1,0 +1,27 @@
+[package]
+name = "effectlatch-store"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+effectlatch-domain = { path = "../domain" }
+serde_json = "=1.0.151"
+sqlx = { version = "=0.9.0", default-features = false, features = ["runtime-tokio", "postgres", "uuid", "migrate"] }
+thiserror = "=2.0.20"
+uuid = { version = "=1.26.0", features = ["v4"] }
+
+[dev-dependencies]
+tokio = { version = "=1.53.1", features = ["rt", "time"] }
+wat = "=1.245.1"
+
+[target.'cfg(windows)'.dependencies]
+sqlx = { version = "=0.9.0", default-features = false, features = ["tls-native-tls"] }
+
+[target.'cfg(not(windows))'.dependencies]
+sqlx = { version = "=0.9.0", default-features = false, features = ["tls-rustls-ring"] }

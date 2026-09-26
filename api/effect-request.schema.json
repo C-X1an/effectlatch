@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "ordinal",
+    "action",
+    "destination",
+    "arguments"
+  ],
+  "properties": {
+    "ordinal": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 7
+    },
+    "action": {
+      "const": "ticket.create"
+    },
+    "destination": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "arguments": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project",
+        "title",
+        "body"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{1,64}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "body": {
+          "type": "string",
+          "maxLength": 8192
+        }
+      }
+    }
+  }
+}
