@@ -1,0 +1,36 @@
+[server]
+bind = "127.0.0.1:8787"
+max_json_bytes = 131072
+max_module_bytes = 2097152
+[limits]
+max_pending_global = 1000
+max_pending_per_tenant = 100
+max_active_global = 4
+max_active_per_tenant = 1
+max_attempts = 3
+lease_ms = 6000
+heartbeat_ms = 2000
+sweep_ms = 1000
+wall_ms = 2000
+memory_bytes = 67108864
+fuel = 10000000
+max_effects = 8
+max_host_calls = 64
+max_log_bytes = 16384
+[retention]
+payload_hours = 24
+metadata_days = 30
+[adapters.tickets-idem]
+base_url = "http://127.0.0.1:8790"
+idempotency = true
+retention_seconds = 86400
+retry_horizon_seconds = 82800
+mode = "idem"
+projects = ["DEMO"]
+[adapters.tickets-nonidem]
+base_url = "http://127.0.0.1:8790"
+idempotency = false
+retention_seconds = 0
+retry_horizon_seconds = 0
+mode = "nonidem"
+projects = ["DEMO"]
