@@ -67,3 +67,9 @@
 /crates/store/src/*
 !/crates/store/src/lib.rs
 !/crates/store/src/scheduler.rs
+
+!/.github/
+/.github/*
+!/.github/workflows/
+/.github/workflows/*
+!/.github/workflows/source-checks.yml
